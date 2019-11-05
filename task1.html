@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+    <script>
+       function myFunction()
+       {
+        var x = document.getElementById("mySelect").value;
+           if(x=='add')
+           {
+              var n1=document.getElementById('t1').value;
+              var n2=document.getElementById('t2').value;
+              var res=eval(n1)+eval(n2);
+              document.getElementById('s1').value=res;
+           }
+           else if(x=='min')
+           {
+               
+              var n1=document.getElementById('t1').value;
+              var n2=document.getElementById('t2').value;
+              var res=eval(n1)-eval(n2);
+              document.getElementById('s1').value=res;
+           }  
+           else if(x=='mul')
+           {
+              var n1=document.getElementById('t1').value;
+              var n2=document.getElementById('t2').value;
+              var res=eval(n1)*eval(n2);
+              document.getElementById('s1').value=res;
+           }
+           else
+           {
+              var n1=document.getElementById('t1').value;
+              var n2=document.getElementById('t2').value;
+              var res=eval(n1)%eval(n2);
+              document.getElementById('s1').value=res;
+           }
+       }
+    </script>
+    <style>
+    body
+    {
+        text-align: center;
+    }
+   </style>
+</head>
+<body>
+   <table>
+    <label for="t1">num1</label>
+    <input type="number" id='t1'>
+    
+    <label for="t2">num2</label>
+    <input type="number" id='t2'>
+
+    <select id='mySelect' name='select1' onchange='myFunction()'>
+        <option value="select option">select option</option>
+        <option value="add" id="n1">+</option>
+        <option value="min" id="n2">-</option>
+        <option value="mul" id="n3">*</option>
+        <option value="%" id="n4">%</option>
+    </select> <br><br>
+    <input type="number" id='s1'>
+   </table>
+</body>
+</html>
