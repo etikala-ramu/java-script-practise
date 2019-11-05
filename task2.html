@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+<script>
+  var statesByCategory = {
+    Telangana:["Hyd", "Warangal", "Karimnagar", "RR"],
+    AP: ["Prakasam", "Guntur", "kurnool","krishna"],
+}
+function changecat(value) {
+        if (value.length == 0) document.getElementById("category").innerHTML = "<option></option>";
+        else {
+            var catOptions = "";
+            for (categoryId in statesByCategory[value]) {
+                catOptions += "<option>" + statesByCategory[value][categoryId] + "</option>";
+            }
+            document.getElementById("category").innerHTML = catOptions;
+        }
+    }
+    function printValue()
+    {
+        var e=document.getElementById('meal').value;
+        document.getElementById('p1').innerHTML=e;
+    }
+    function printValue2()
+    {
+        var temp=document.getElementById('category').value;
+        document.getElementById('p2').innerHTML=temp;
+    }
+</script>
+</head>
+<body>
+    select state:
+    <select name="meal" id="meal" onChange="changecat(this.value);printValue();">
+        <option value="" disabled selected>Select</option>
+        <option value="Telangana" id="TG">Telangana</option>
+        <option value="AP" id="AP">AP</option>
+    </select>
+    select district:
+    <select name="category" id="category" onchange="printValue2()">
+        <option value="" disabled selected>Select</option>
+    </select>
+    <br><br><br><br><br><br>
+    ur selected:
+    <span id="p1"></span>
+    <span id="p2"></span>
+</body>
+</html>

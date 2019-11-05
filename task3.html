@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+<script>
+  var loanByCategory = {
+    1:["4","5","6","7","8","9","10","11","12","13","14","15","16","17","18"],
+    2:["4","5","6","7","8","9","10","11","12","13","14","15","16","17","18"],
+    3:["4","5","6","7","8","9","10","11","12","13","14","15","16","17","18"],
+    4:["4","5","6","7","8","9","10","11","12","13","14","15","16","17","18"],
+    5:["4","5","6","7","8","9","10","11","12","13","14","15","16","17","18"],
+}
+function changecat(value) {
+        if (value.length == 0) document.getElementById("category").innerHTML = "<option></option>";
+        else {
+            var catOptions = "";
+            for (categoryId in loanByCategory[value]) {
+                catOptions += "<option>" + loanByCategory[value][categoryId] + "</option>";
+            }
+            document.getElementById("category").innerHTML = catOptions;
+        }
+    }
+    function calculateEmi()
+    {
+        var P=document.getElementById('n1').value;
+        var R=document.getElementById('tenure').value;
+        var N=document.getElementById('category').value;
+        var res=eval(P)*eval(R)*(1+eval(R)/(1+eval(R)^eval(N)-1));
+            document.getElementById('t1').value=res;
+    }
+</script>
+</head>
+<body>
+    Loan Amount:
+    <input type="number" id="n1"> <br><br>
+    Loan Tenure:
+    <select name="tenure" id="tenure" onChange="changecat(this.value);">
+        <option value="" disabled selected>Select</option>
+        <option value="1" id="one">1</option>
+        <option value="2" id="two">2</option>
+        <option value="3" id="three">3</option>
+        <option value="4" id="four">4</option>
+        <option value="5" id="five">5</option>
+    </select><br><br>
+    Loan Interest:
+    <select name="category" id="category">
+        <option value="" disabled selected>Select</option>
+    </select>
+    <br><br><br><br><br><br>
+    EMI per month:
+    <button onclick="calculateEmi()">calculate EMI</button>
+    <span id="p1"></span>
+    <span id="p2"></span>
+    <span id="p3"></span>
+    <input type="number" id="t1">
+</body>
+</html>
